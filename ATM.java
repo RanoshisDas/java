@@ -59,6 +59,7 @@ public class ATM {
         }
     }
 
+    //main
     public static void main(String[] args){
         ATM atm = new ATM(10000,1245);
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
