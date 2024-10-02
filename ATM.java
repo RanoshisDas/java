@@ -9,7 +9,6 @@ public class ATM {
         this.balance = balance;
         this.pin = pin;
     }
-
     public void display(){
         System.out.println("\nWelcome to ATM!");
         System.out.println("1.Display Balance");
