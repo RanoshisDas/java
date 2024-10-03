@@ -3,12 +3,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class ATM {
+    //variable declaration
     private  int pin;
     private int balance;
+    //parameterize constructor
     public ATM(int balance,int pin){
         this.balance = balance;
         this.pin = pin;
     }
+    //list of operations
     public void display(){
         System.out.println("\nWelcome to ATM!");
         System.out.println("1.Display Balance");
@@ -17,6 +20,7 @@ public class ATM {
         System.out.println("4.Change PIN");
         System.out.println("5.Exit/Cancel Transaction");
     }
+    //get balance if pin is correct
     public void getBalance(int pin){
         if(validatePin(pin)){
             System.out.println("Your balance is "+ balance);
@@ -25,9 +29,11 @@ public class ATM {
             System.out.println("Your PIN is not valid");
         }
     }
+    //validating the pin that user entered
     public boolean validatePin(int pin){
         return this.pin == pin;
     }
+    //add money to account with pin validation
     public void deposit(int amount, int pin){
         if(validatePin(pin)){
             this.balance += amount;
@@ -36,6 +42,7 @@ public class ATM {
             System.out.println("Your PIN is not valid");
         }
     }
+    //subtract withdrawal amount from balance if pin is valid
     public void withdraw(int amount,int pin){
         if(validatePin(pin)){
             if(this.balance >= amount){
@@ -50,6 +57,7 @@ public class ATM {
             System.out.println("Your PIN is not valid");
         }
     }
+    //change the  existing pin
     public void changePin(int oldPin,int pin){
         if(validatePin(oldPin)){
             this.pin = pin;
@@ -59,7 +67,7 @@ public class ATM {
         }
     }
 
-    //main
+    //main driver
     public static void main(String[] args){
         ATM atm = new ATM(10000,1245);
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -76,7 +84,7 @@ public class ATM {
                 System.out.println("Enter a valid choice");
             }
             switch(operation){
-
+                //check balance
                 case 1:
                     System.out.print("Enter your pin: ");
                     try {
@@ -88,7 +96,7 @@ public class ATM {
                         System.out.println("Enter a valid pin");
                     }
                     break;
-
+                //Deposit money to account
                 case 2:
                     System.out.print("Enter your deposit amount: ");
                     try {
@@ -102,7 +110,7 @@ public class ATM {
                         System.out.println("Enter a valid pin");
                     }
                     break;
-
+                //Withdrawal money from account
                 case 3:
                     System.out.print("Enter your withdrawal amount: ");
                     try {
@@ -116,6 +124,7 @@ public class ATM {
                         System.out.println("Enter a valid pin");
                     }
                     break;
+                //Change pin
                 case 4:
                     System.out.print("Enter your new pin: ");
                     try {
@@ -129,11 +138,11 @@ public class ATM {
                         System.out.println("Enter a valid pin");
                     }
                     break;
-
+                //Close/Exit
                 case 5:
                     System.out.println("Thank you for using ATM!");
                     break;
-
+                //in valid operation handle
                 default:
                     System.out.println("Invalid operation");
                     break;
